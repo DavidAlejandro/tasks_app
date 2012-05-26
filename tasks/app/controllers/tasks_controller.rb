@@ -1,5 +1,8 @@
 class TasksController < ApplicationController
   def index
+  
+   @tasks = Task.all
+  
   end
 
   def show
@@ -28,5 +31,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
+  
+  Task.find_by_id(params[:id]).try(:delete)
+    redirect_to tasks_path
+    
   end
 end
